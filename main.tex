@@ -1,0 +1,115 @@
+\documentclass[a4paper,fontsize=11pt,DIV=15,%
+parskip=half,headsepline,%
+abstract,index=totoc,bibliography=totoc,listof=toc%
+]{scrreprt}
+%
+%--------------------  start of the 'preamble'
+%
+\usepackage{ifthen}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex]{color,graphicx}
+\usepackage{epstopdf}
+\DeclareGraphicsExtensions{.mps,.eps}
+\else
+\usepackage[dvips]{color,graphicx}
+\DeclareGraphicsExtensions{.mps,.eps}
+\fi
+
+\usepackage[%
+bookmarksnumbered,%
+bookmarksopen,%
+colorlinks,%
+citecolor=blue,%
+linkcolor=blue,%
+urlcolor=blue,%
+pdfauthor={Ian Yang},%
+pdftitle={title}]{hyperref}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsthm}
+
+\theoremstyle{definition} \newtheorem{definition}{Definition}
+
+\usepackage{ctable}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+\usepackage{longtable}
+
+% \usepackage{msc}
+
+\usepackage{listings}
+% \lstloadlanguages{C++}
+% \usepackage[ruled,noline]{algorithm2e}
+\lstset{%
+  basicstyle=\small\ttfamily,%
+  belowcaptionskip=\bigskipamount}
+% \lstdefinelanguage{conf}{%
+%   sensitive=false,%
+%   morecomment=[l]{\#},%
+%   morestring=[b]"%
+% }
+
+\usepackage{makeidx}
+\makeindex
+
+\newcommand\etc{\textsl{etc}}
+\newcommand\eg{\textsl{eg.}\ }
+\newcommand\etal{\textsl{et al.}}
+\newcommand\ie{\textsl{i.e.}}
+\newcommand\Quote[1]{\lq\textsl{#1}\rq}
+\newcommand\fr[2]{{\textstyle\frac{#1}{#2}}}
+\newcommand\TODO[2][]{\vspace{5pt}\par\noindent%
+  \ifthenelse{\equal{#1}{}}
+  {\index{TODO!{#2}}\emph{TODO}: #2\par}
+  {\index{TODO!{#1}}\emph{TODO}: #1. #2\par}}
+
+\usepackage[%
+format=hang,labelfont=bf,labelsep=period,%
+justification=centerlast]{caption}
+
+\usepackage{floatrow}
+\floatsetup[table]{style=plaintop}
+
+\DeclareNewFloatType{File}{placement=!hbp,fileext=lofl}
+\captionsetup[File]{justification=raggedright}
+\floatsetup[File]{%
+  capposition=beside,capbesideposition={left,top},%
+  objectset=raggedleft%
+}
+
+% \file{caption}{url}
+\newcommand{\file}[2]{%
+  \begin{File}%
+    \caption{#1}\texttt{\url{#2}}%
+  \end{File}%
+}
+% \floatstyle{boxed}
+% \newfloat{hintbox}{H}{hnt}
+% \floatname{hintbox}{Hint}
+
+%--------------------  end of the 'preamble'
+\begin{document}
+
+%--------------------------------------------------
+\author{Ian Yang}
+\title{title}
+% \publishers{publish}
+\maketitle
+
+%--------------------------------------------------
+\tableofcontents
+\listoftables
+\listoffigures
+%--------------------------------------------------
+
+% \input{overview}
+
+\clearpage
+% \input{bibliography}
+\printindex
+% --------------------------------------------------
+\end{document}
